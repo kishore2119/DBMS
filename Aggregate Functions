@@ -1,0 +1,34 @@
+-- Assuming a 'company' table with columns 'companyn' and 'amount' exists
+
+-- AVG function
+Select AVG(amount) from company;
+
+-- SUM function
+Select SUM(amount) from company;
+
+-- MAX function
+Select Max(amount) from company;
+
+-- MIN function
+Select Min(amount) from company;
+
+-- COUNT function
+Select Count(*) from company;
+
+-- GROUP BY (Sum of amount for each company)
+select companyn, sum(amount) from company group by companyn;
+
+-- GROUP BY (Min amount for each company)
+select companyn, min(amount) from company group by companyn;
+
+-- GROUP BY (Max amount for each company)
+select companyn, max(amount) from company group by companyn;
+
+-- GROUP BY (Count of rows for each company)
+select companyn, count(*) from company group by companyn;
+
+-- HAVING clause (Count greater than 1)
+select companyn, count(*) from company group by companyn having count(*)>1;
+
+-- HAVING clause (Sum greater than 10000)
+select companyn, sum(amount) from company group by companyn having sum(amount)>10000;
