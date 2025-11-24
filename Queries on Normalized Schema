@@ -1,0 +1,22 @@
+
+-- Display all students and their majors
+SELECT * FROM Students;
+
+-- Display all courses with credits
+SELECT CourseName, Credits FROM Courses;
+
+-- Display students who enrolled in 'DBMS' (3-table join)
+SELECT s.StudentName, c.CourseName
+FROM Students s, Enrollments e, Courses c
+WHERE s.StudentID = e.StudentID AND e.CourseID = c.CourseID AND c.CourseName = 'DBMS';
+
+-- Display instructor names along with the courses they teach (3-table join)
+SELECT i.InstructorName, c.CourseName
+FROM Instructors i, Courses c, Course_Instructors ci
+WHERE i.InstructorID = ci.InstructorID AND ci.CourseID = c.CourseID;
+
+-- Count number of students enrolled in each course (JOIN and GROUP BY)
+SELECT c.CourseName, COUNT(e.StudentID) AS Total_Students
+FROM Courses c, Enrollments e
+WHERE c.CourseID = e.CourseID
+GROUP BY c.CourseName;
