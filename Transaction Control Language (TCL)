@@ -1,0 +1,28 @@
+
+
+-- Setup for TCL demonstration
+CREATE TABLE accounts (
+    accno NUMBER,
+    name VARCHAR2(20),
+    balance NUMBER
+);
+
+-- Start Transaction
+INSERT INTO accounts VALUES (101, 'Ravi', 2000);
+
+-- Savepoint A
+SAVEPOINT A;
+INSERT INTO accounts VALUES (102, 'Suma', 3000);
+
+-- Savepoint B
+SAVEPOINT B;
+UPDATE accounts SET balance = balance + 500 WHERE accno =101;
+
+-- Rollback to Savepoint B (Undo the UPDATE)
+ROLLBACK TO B;
+
+-- COMMIT (Make all changes up to Savepoint B permanent)
+COMMIT;
+
+-- Cleanup (Optional)
+-- DROP TABLE accounts;
