@@ -1,0 +1,47 @@
+CREATE TABLE Students (
+    StudentID VARCHAR2(10),
+    StudentName VARCHAR2(30),
+    Major VARCHAR2(30)
+);
+
+CREATE TABLE Courses (
+    CourseID VARCHAR2(10),
+    CourseName VARCHAR2(30),
+    Credits NUMBER
+);
+
+CREATE TABLE Enrollments (
+    StudentID VARCHAR2(10),
+    CourseID VARCHAR2(10),
+    EnrollmentDate DATE
+);
+
+CREATE TABLE Instructors (
+    InstructorID VARCHAR2(10),
+    InstructorName VARCHAR2(30),
+    Phone NUMBER
+);
+
+CREATE TABLE Course_Instructors (
+    CourseID VARCHAR2(10),
+    InstructorID VARCHAR2(10)
+);
+
+
+INSERT INTO Students VALUES ('S01', 'Kiran', 'CSE');
+INSERT INTO Students VALUES ('S02', 'Bala', 'ECE');
+INSERT INTO Students VALUES ('S03', 'Ravi', 'EEE');
+
+INSERT INTO Courses VALUES ('C01', 'DBMS', 4);
+INSERT INTO Courses VALUES ('C02', 'OS', 3);
+INSERT INTO Courses VALUES ('C03', 'Networks', 3);
+
+INSERT INTO Enrollments VALUES ('S01', 'C01', '12-SEP-2024');
+INSERT INTO Enrollments VALUES ('S02', 'C02', '15-SEP-2024');
+INSERT INTO Enrollments VALUES ('S03', 'C03', '20-SEP-2024');
+
+INSERT INTO Instructors VALUES ('101', 'Suma', 9876543210);
+INSERT INTO Instructors VALUES ('102', 'Raju', 9876501234);
+
+INSERT INTO Course_Instructors VALUES ('C01', '101');
+INSERT INTO Course_Instructors VALUES ('C02', '102');
