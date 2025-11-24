@@ -1,0 +1,26 @@
+
+-- Creating a table where PRIMARY KEY automatically creates a Primary Index
+CREATE TABLE Students (
+    StudentID VARCHAR2(10) PRIMARY KEY, -- Primary Index created automatically
+    StudentName VARCHAR2(30),
+    Major VARCHAR2(20)
+);
+
+-- Creating a Secondary Index manually on a non-key column
+CREATE INDEX idx_studentname
+ON Students (StudentName);
+
+-- Inserting Data (Indexes automatically update)
+INSERT INTO Students VALUES ('S01', 'Kiran', 'CSE');
+INSERT INTO Students VALUES ('S02', 'Ravi', 'ECE');
+INSERT INTO Students VALUES ('S03', 'Bala', 'EEE');
+
+-- Retrieving Data using an Indexed Column (improves performance)
+SELECT * FROM Students WHERE StudentName = 'Kiran';
+
+-- Deleting Data (Index entries automatically deleted)
+DELETE FROM Students WHERE StudentID ='S02';
+
+-- Cleanup (Optional)
+-- DROP INDEX idx_studentname;
+-- DROP TABLE Students;
