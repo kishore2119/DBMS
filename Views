@@ -1,0 +1,28 @@
+-- Assuming table st1 (ROLLNO, NAME, MARKS) exists
+
+-- Basic View Creation
+create view myview as select rollno, name from st1;
+
+-- Insert into a View
+insert into myview values (506, 'prathisha');
+
+-- Select from a View
+select * from myview;
+
+-- Delete from a View
+delete from myview where rollno =506;
+
+-- Change the Structure of the View (CREATE OR REPLACE)
+create or replace view myview as select * from st1;
+
+-- Create View when base table doesn't exist (FORCE option)
+create or replace force view abc as select * from dummy_table;
+
+-- Creating Read-only view
+create view myview1 as select * from st1 with read only;
+
+-- Creating View with CHECK OPTION (prevents updates violating WHERE clause)
+create view myview2 as select * from st1 where marks <101 with check option;
+
+-- Dropping view
+Drop View myview1;
